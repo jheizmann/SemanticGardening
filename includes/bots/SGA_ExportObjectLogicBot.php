@@ -180,21 +180,27 @@ class ExportObjectLogicBot extends GardeningBot {
 
 				$modifiers .= "}";
 
-				// build OBL string
-				$propertyIRI = $this->getTSCIRI($title);
-				if (is_null($range)) {
-					$typeIRI = "<".str_replace("xsd:", TSNamespaces::$XSD_NS, $type).">";
-				} else{
-					$rangeIRI = $this->getTSCIRI($range);
-				}
-				foreach($domains as $d) {
-					$domainIRI = $this->getTSCIRI($d);
-					if (is_null($range)) {
-						$obl .= "\n$domainIRI [ $propertyIRI $modifiers *=> $typeIRI ].";
-					} else{
-						$obl .= "\n$domainIRI [ $propertyIRI $modifiers *=> $rangeIRI ].";
-					}
-				}
+			    // build OBL string
+                $propertyIRI = $this->getTSCIRI($title);
+                if (is_null($range)) {
+                    $typeIRI = "<".str_replace("xsd:", TSNamespaces::$XSD_NS, $type).">";
+                } else{
+                    if ($range !== false) {
+                        $rangeIRI = $this->getTSCIRI($range);
+                    }
+                }
+                foreach($domains as $d) {
+                    $domainIRI = $this->getTSCIRI($d);
+                    if (is_null($range)) {
+                        $obl .= "\n$domainIRI [ $propertyIRI $modifiers *=> $typeIRI ].";
+                    } else{
+                        if ($range === false) {
+                            $rangeIRI = $domainIRI;
+                            print "\nWARNING: $propertyIRI does not define a range category although it is an object property. Domain category used instead.";
+                        }
+                        $obl .= "\n$domainIRI [ $propertyIRI $modifiers *=> $rangeIRI ].";
+                    }
+                }
 
 				foreach($subProperties as $subProperty) {
 					$subPropertyIRI = $this->getTSCIRI($subProperty);
