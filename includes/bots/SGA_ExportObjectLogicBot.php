@@ -264,7 +264,7 @@ class ExportObjectLogicBot extends GardeningBot {
 
 							if ($dbkey !== false) {
 								$value = str_replace('"','\"', $dbkey);
-                                $value = '"'.$this->fixType($value, $typeID).'"';
+								$value = '"'.$this->fixType($value, $typeID).'"';
 
 								$type = WikiTypeToXSD::getXSDType($typeID);
 								$typeIRI = "<".str_replace("xsd:", TSNamespaces::$XSD_NS, $type).">";
@@ -280,13 +280,16 @@ class ExportObjectLogicBot extends GardeningBot {
 
 
 	private function exportRules($bundleID) {
-
+		global $smwgTripleStoreGraph;
 		// do not export rules if SemanticRules extensions is not available.
 		if (!defined('SEMANTIC_RULES_VERSION')) {
 			return "";
 		}
 
 		$ontologyURI = DFBundleTools::getOntologyURI($bundleID);
+		if (is_null($ontologyURI) || empty($ontologyURI)) {
+			$ontologyURI = $smwgTripleStoreGraph . "/ontology/$bundleID";
+		}
 
 		global $dfgLang;
 		$bundleIDValue = SMWDataValueFactory::newTypeIDValue('_wpg', $bundleID);
@@ -489,6 +492,10 @@ ENDS;
 			$f = "export".uniqid().".obl";
 			echo "\nCreate temporary file: $tempdir/$f...";
 			$ontologyURI = DFBundleTools::getOntologyURI($bundleName);
+			if (is_null($ontologyURI) || empty($ontologyURI)) {
+				$ontologyURI = $smwgTripleStoreGraph . "/ontology/$bundleName";
+			}
+
 			$header = $this->createOBLHeader($ontologyURI, $bundleName);
 			$obl = $oblExt ."\n\n" . $obl;
 			echo "done.";
