@@ -2,7 +2,7 @@
 <deploydescriptor>
 	<global>
 		<version>134</version>
-		<patchlevel>2</patchlevel>
+		<patchlevel>3</patchlevel>
 		<id>semanticgardening</id>
 		<vendor>Ontoprise GmbH</vendor>
 		<maintainer>Ontoprise GmbH</maintainer>
