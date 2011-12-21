@@ -58,7 +58,7 @@ class SGA_LanguageDe {
     'smw_missingannotationsbot' => 'Finde Seiten ohne Annotationen',
     'smw_anomaliesbot' => 'Finde Anomalien',
     'smw_renamingbot' => 'Benenne Seiten um',
-    'smw_importontologybot' => 'Importiere eine Ontologie',
+    
     'smw_gardissue_class_all' => 'Alle',
     
     'smw_gard_import_choosefile' => 'Die folgenden $1-Dateien sind auf dem Server verf�gbar.',
@@ -166,14 +166,6 @@ class SGA_LanguageDe {
     
     'smw_gardissue_class_category_leaves' => 'Kategorie-Blätter',
     'smw_gardissue_class_number_anomalies' => 'Subkategorie Anomalien',
-    
-    /*Message for ImportOntologyBot*/
-    'smw_gard_import_docu' => 'Importiert eine OWL-Datei.',
-    'smw_gard_import_uselabels' => 'Benutze Labels',
-    'smw_gard_ontology_id' => 'Ontology ID',
-    'smw_df_missing' => 'Um die Gardening Bots nutzen zu k�nnen m�ssen Sie das Deployment Framework installieren! <br/> Folgen Sie dem Link f�r weitere Informationen: ',
-    'smw_TSC_missing' => 'Um die Gardening Bots nutzen zu k�nnen m�ssen Sie das Triplestore Connector installieren! <br/> Folgen Sie dem Link f�r weitere Informationen:',
-    
     
     /*Message for ExportOntologyBot*/
     'smw_exportontologybot' => 'Exportiere Ontologie',  
