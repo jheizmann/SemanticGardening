@@ -62,9 +62,11 @@ of the tools click on this link: $1.',
     'smw_missingannotationsbot' => 'Find pages without annotations',
     'smw_anomaliesbot' => 'Find anomalies',
     'smw_renamingbot' => 'Rename page',
-    
-    'smw_gardissue_class_all' => 'All',
    
+    'smw_gardissue_class_all' => 'All',
+    
+    
+  
 
     /* Messages for Gardening Bot: ConsistencyBot */
     'smw_gard_consistency_docu'  => 'The consistency bot checks for cycles in the taxonomy and properties without domain and range. It also checks the correct usage of properties according to domain and range information as well as cardinality errors.',
@@ -174,7 +176,7 @@ of the tools click on this link: $1.',
     'smw_gardissue_class_category_leaves' => 'Category leaves',
     'smw_gardissue_class_number_anomalies' => 'Subcategory anomaly',
     
-  
+   
 
     /*Message for ExportOntologyBot*/
     'smw_exportontologybot' => 'Export ontology',   

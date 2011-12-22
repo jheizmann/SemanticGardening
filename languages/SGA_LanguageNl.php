@@ -59,10 +59,10 @@ class SGA_LanguageNl {
     'smw_missingannotationsbot' => 'Pagina´s zonder aantekeningen zoeken',
     'smw_anomaliesbot' => 'Anomalieën zoeken',
     'smw_renamingbot' => 'Pagina hernoemen',
-   
+    
     'smw_gardissue_class_all' => 'Alle',
     
-   
+     
     /* Messages for Gardening Bot: ConsistencyBot */
     'smw_gard_consistency_docu'  => 'De consistentiebot houdt toezicht op loops in de taxonomie en eigenschappen zonder domein of waardenbereik. Het controleert ook op het correct gebruik van eigenschappen overeenstemmend met domein en waardenbereik, alsook foutieve kardinaliteiten.',
     'smw_gard_no_errors' => 'Proficiat! De wiki is consistent.',
@@ -168,8 +168,8 @@ class SGA_LanguageNl {
     
     'smw_gardissue_class_category_leaves' => 'Categoriebladen',
     'smw_gardissue_class_number_anomalies' => 'Subcategorie anomalie',
-    
    
+    
     /*Message for ExportOntologyBot*/
     'smw_exportontologybot' => 'Ontology exporteren',   
     'smw_gard_export_docu' => 'Deze bot exporteert de wiki ontology in OWL formaat.',
