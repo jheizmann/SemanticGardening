@@ -4,7 +4,7 @@
 		<id>semanticgardening</id>
 		<title>Semantic Gardening extension</title>
 		<version>1.3.6</version>
-        <patchlevel>1</patchlevel>
+        <patchlevel>2</patchlevel>
 		<vendor>ontoprise GmbH</vendor>
 		<maintainer>ontoprise GmbH</maintainer>
 		<instdir>extensions/SemanticGardening</instdir>
@@ -52,6 +52,9 @@
 			</variable>
 			<script file="maintenance/SGA_setup.php" params="" />
 		</new>
+		<update from="135">
+		  <script file="maintenance/SGA_setup.php" params="--update" />
+		</update>
 		<uninstall>
 			<script file="maintenance/SGA_setup.php" params="--delete" />
     	</uninstall>

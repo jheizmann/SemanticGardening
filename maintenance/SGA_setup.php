@@ -20,10 +20,10 @@
 /**
  * @file
  * @ingroup SemanticGardeningMaintenance
- * 
- * @defgroup SemanticGardeningMaintenance 
+ *
+ * @defgroup SemanticGardeningMaintenance
  * @ingroup SemanticGardening
- * 
+ *
  * Setup database for Semantic Gardening extension.
  *
  * @author: Kai K�hn
@@ -44,6 +44,7 @@ $help = array_key_exists("help", $options);
 $onlyTables = array_key_exists("onlytables", $options);
 $predefpages = array_key_exists("predefpages", $options);
 $delete = array_key_exists("delete", $options);
+$update = array_key_exists("update", $options);
 
 if ($help) {
 	echo "\nUsage: php SGA_setup.php [ --onlytables ] [ --predefpages ] [ --delete ]\n";
@@ -52,26 +53,41 @@ if ($help) {
 }
 if ($onlyTables) {
 	sgafInitializeTables();
-	
+
 }
 
 if ($predefpages) {
 	global $sgagIP;
-    require_once("$sgagIP/includes/SGA_GardeningInitialize.php");
-    require_once("$sgagIP/specials/Gardening/SGA_Gardening.php");
+	require_once("$sgagIP/includes/SGA_GardeningInitialize.php");
+	require_once("$sgagIP/specials/Gardening/SGA_Gardening.php");
 	SGAGardeningLog::getGardeningLogAccess()->createPredefinedPages(true);
+}
+
+if ($update) {
+	global $sgagIP;
+	require_once("$sgagIP/includes/SGA_GardeningInitialize.php");
+	require_once("$sgagIP/specials/Gardening/SGA_Gardening.php");
+	if (file_exists("$sgagIP/includes/bots/SGA_ExportObjectLogicBot.php")) {
+		unlink("$sgagIP/includes/bots/SGA_ExportObjectLogicBot.php");
+		echo "\nSGA_ImportOntologyBot.php removed.";
+	}
+	if (file_exists("$sgagIP/includes/bots/SGA_ImportOntologyBot.php")) {
+		unlink("$sgagIP/includes/bots/SGA_ImportOntologyBot.php");
+		echo "\nSGA_ImportOntologyBot.php removed.";
+	}
+	echo "\nThe Semantic Gardening has been successfully updated.\n";
 }
 
 if ($delete) {
 	global $sgagIP;
-    require_once("$sgagIP/includes/SGA_GardeningInitialize.php");
-    require_once("$sgagIP/specials/Gardening/SGA_Gardening.php");
-    SGAGardeningIssuesAccess::getGardeningIssuesAccess()->drop(true);
-    SGAGardeningLog::getGardeningLogAccess()->drop(true);
-    echo "\nThe Semantic Gardening has been successfully removed.\n";
+	require_once("$sgagIP/includes/SGA_GardeningInitialize.php");
+	require_once("$sgagIP/specials/Gardening/SGA_Gardening.php");
+	SGAGardeningIssuesAccess::getGardeningIssuesAccess()->drop(true);
+	SGAGardeningLog::getGardeningLogAccess()->drop(true);
+	echo "\nThe Semantic Gardening has been successfully removed.\n";
 }
 
-if (!$onlyTables && !$predefpages && !$delete) {
+if (!$onlyTables && !$predefpages && !$delete && !$update) {
 	sgafInitializeTables();
 	SGAGardeningLog::getGardeningLogAccess()->createPredefinedPages(true);
 	echo "\nThe Semantic Gardening has been successfully installed.\n";
